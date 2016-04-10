@@ -19,5 +19,5 @@ describe('Palindrome for numbers', () => {
   it('should return false if input number is not palindrome', () => {
     assert.equal(main('12'), false, 'fails at 12');
     assert.equal(main('123'), false, 'fails at 123');
-  })
+  });
 });
