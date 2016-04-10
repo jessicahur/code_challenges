@@ -1,0 +1,22 @@
+{
+  "name": "code_challenges",
+  "version": "1.0.0",
+  "description": "Code Eval code challenges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicahur/code_challenges.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicahur/code_challenges/issues"
+  },
+  "homepage": "https://github.com/jessicahur/code_challenges#readme",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}
