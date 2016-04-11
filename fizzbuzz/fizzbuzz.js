@@ -38,7 +38,7 @@ function main (filename) {
     });
   });
 }
-// main('./testcase.txt');
+main('./testcase.txt');
 module.exports = main;
 
 // var fs  = require("fs");
