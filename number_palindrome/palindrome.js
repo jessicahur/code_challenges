@@ -22,7 +22,7 @@ function main (num) {
     if (firstHalf === secondHalf) return true;
     else return false;
   }
-};
+}
 
 function helper (str) {
   var result = '';
