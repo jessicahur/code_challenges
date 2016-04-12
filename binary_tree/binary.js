@@ -80,12 +80,50 @@ BinarySearchTree.prototype = {
     },
 
     size: function(){
+      var length = 0;
+
+      this.traverse(function(node) {//this function is the 'process'
+        length ++;
+      });
+
+      return length;
     },
 
     toArray: function(){
+      var result = [];
+
+      this.traverse(function(node) {
+        result.push(node.value);
+      });
+
+      return result;
     },
 
     toString: function(){
+      return this.toArray().toString(); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString
+    },
+
+    traverse: function(process){ //process is a function that should be run on each node in the tree
+      //helper function
+      function inOrder(node) {
+        if (node) {
+          //traverse the left subtree, recursive!!
+          if (node.left !== null) {
+            inOrder(node.left);
+          }
+
+          //call the process function on this node
+          process.call(this, node);
+
+          //traverse the right subtree
+          if (node.right !== null) {
+            inOrder(node.right);
+          }
+        }
+      }
+
+      //start with the root
+      inOrder(this._root);
     }
 
 };
