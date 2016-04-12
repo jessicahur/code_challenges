@@ -43,8 +43,8 @@ module.exports = main;
 
 // var fs  = require("fs");
 // function main () {
+//   var hashTable = {};
 //   fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
-//       var hashTable = {};
 //       if (line != "") {
 //           var params = line.split(' ');
 //         if ( hashTable.hasOwnProperty(line) ) {
@@ -52,21 +52,20 @@ module.exports = main;
 //          }
 //         else {
 
-//             result = '';
-//             for (var ii = 1; ii <= params[2]; ii ++) {
+//             result = '1';
+//             for (var ii = 2; ii <= params[2]; ii ++) {
 //                 if ( ii % (params[0] * params[1]) === 0 ) {
-//                     result += 'FB';
+//                     result += ' FB';
 //                 }
 //                 else if ( ii % params[0] === 0) {
-//                     result += 'F';
+//                     result += ' F';
 //                 }
 //                 else if ( ii % params[1] === 0) {
-//                     result += 'B';
+//                     result += ' B';
 //                 }
 //                 else {
-//                     result += ii;
+//                     result += ' ' + ii;
 //                 }
-//                 result += ' ';
 //             }
 //             //Save result for future use if input is the same
 //             hashTable[line] = result;
