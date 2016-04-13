@@ -77,6 +77,103 @@ BinarySearchTree.prototype = {
     },
 
     remove: function(value){
+
+      var found = false,
+          parent = null,
+          current = this._root,
+          childCount,
+          replacementParent;
+
+      //make sure the node exists: while loop goes on if we haven't found the node AND there is a current nodet
+      while(!found && current) {
+        //if the value is less than the current node, go left
+        if (value < current.value) {
+          parent = current;
+          current = current.left;
+        }
+        //if the value is greater than the current value, go right
+        else if (value > current.value) {
+          parent = current;
+          current = current.right;
+        }
+        //if the value is equal, we found our node
+        else {
+          found = true; //terminates while loop
+        }
+      }
+
+      //Only proceed of a node of searched value is found
+      if (found) {
+        //figure out how many children
+        childCount = (current.left !== null ? 1 : 0) + (current.right ? 1 : 0);
+
+        //special case: value is at the root
+        if (current === this._root) {
+          switch (childCount) {
+            //no children, just erase the root
+            case 0:
+              this._root = null;
+              break;
+            //1 child, use one as the root
+            case 1:
+              this._root = (current.right === null ? current.left : current.right);
+              break;
+            //2 children case
+            case 2:
+              replacement = this._root.left;
+
+              //find the right-most leaf node to be the real new root
+              while (replacement.right !== null) {
+                replacementParent = replacement;
+                replacement = replacementParent.right;
+              }
+
+              //if it's not the first node on the left
+          }
+        }
+        //non-root case
+        else {
+          switch (childCount) {
+
+            //no children: just remove it from the parent
+            case 0:
+              //if the current value is less than its parent's, null out the left pointer
+              if (current.value < parent.value) {
+                parent.left = null;
+              }
+              //if the current value is greater than its parent's, null out the right pointer
+              else {
+                parent.right = null;
+              }
+              break;
+
+            //one child: just reassign to parent
+            case 1:
+              //if the current value is less than its parent's, reset left pointer
+              if (current.value < parent.value) {
+                parent.left = (current.left === null ? current.right : current.left);
+              }
+              //if the current value is greater than its parent's, reset right pointer
+              else {
+                parent.right = (current.left === null ? current.right : current.left);
+              }
+              break;
+
+            //two children:
+            case 2:
+
+            //Find in-order predecessor (value that comes immediately after the value being removed)
+            //by examine the left subtree of the node to remove and select the right-most descendant
+
+            //Find in-order successor (value that comes immediately after the value being removed)
+            //by reversed the process: exmine the right subtree for the left-most descendant
+
+            //TODO
+
+            }
+          }
+        }
+      }
     },
 
     size: function(){
