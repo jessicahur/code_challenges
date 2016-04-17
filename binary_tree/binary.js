@@ -129,6 +129,20 @@ BinarySearchTree.prototype = {
               }
 
               //if it's not the first node on the left
+              if (replacementParent !== null) {
+                //remove new root from its previous position
+                replacementParent.right = replacement.left;
+                //give new root all of the old root children
+                replacement.right = this._root.right;
+                replacement.left = this._root.left;
+              }
+              else {
+                //just assign the children
+                replacement.right = this._root.right;
+              }
+
+              //officially assign new root
+              this._root = replacement;
           }
         }
         //non-root case
@@ -161,14 +175,35 @@ BinarySearchTree.prototype = {
 
             //two children:
             case 2:
+              //reset pointer for new traversal
+              replacement = current.left;
+              replacementParent =current;
+
+              //find the right most node
+              while( replacement.right !== null ) {
+                replacementParent = replacement;
+                replacement = replacement.right;
+              }
+
+              replacementParent.right = replacement.left;
+
+              //assign children to the replacement
+              replacement.right = current.right;
+              replacement.left = current.left;
+
+              //place replacement in the right spot
+              if (current.value < parent.value) {
+                parent.left = replacement;
+              }
+              else {
+                parent.right = replacement;
+              }
 
             //Find in-order predecessor (value that comes immediately after the value being removed)
             //by examine the left subtree of the node to remove and select the right-most descendant
 
             //Find in-order successor (value that comes immediately after the value being removed)
             //by reversed the process: exmine the right subtree for the left-most descendant
-
-            //TODO
 
             }
           }
